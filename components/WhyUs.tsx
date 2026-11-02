@@ -11,16 +11,13 @@ export default function WhyUs() {
           description="Nie heslá, ale konkrétne veci, na ktoré dávame pozor pri každej zákazke."
         />
 
-        <div className="mt-14 grid gap-px bg-ink/10 sm:grid-cols-2">
+        <div className="mt-10 grid gap-px bg-ink/10 sm:mt-14 sm:grid-cols-2">
           {whyUsItems.map((item) => (
-            <article
-              key={item.number}
-              className="bg-cream p-8 md:p-10"
-            >
+            <article key={item.number} className="bg-cream p-6 sm:p-8 md:p-10">
               <span className="font-display text-sm tracking-[0.2em] text-clay">
                 {item.number}
               </span>
-              <h3 className="mt-4 font-display text-xl font-semibold tracking-tight text-ink md:text-2xl">
+              <h3 className="mt-3 font-display text-lg font-semibold tracking-tight text-ink sm:mt-4 sm:text-xl md:text-2xl">
                 {item.title}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-ink-muted md:text-base">

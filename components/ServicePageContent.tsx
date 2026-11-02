@@ -96,7 +96,7 @@ export default function ServicePageContent({ service }: ServicePageContentProps)
               </ul>
               <Link
                 href="/kontakt/"
-                className="mt-8 inline-block bg-ink px-6 py-3.5 text-sm font-medium text-cream transition-colors hover:bg-clay"
+                className="btn-touch mt-8 bg-ink text-cream transition-colors hover:bg-clay"
               >
                 Nezáväzný dopyt
               </Link>

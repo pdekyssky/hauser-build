@@ -28,15 +28,32 @@ const config: Config = {
         display: ["var(--font-syne)", "system-ui", "sans-serif"],
       },
       fontSize: {
-        "display-xl": ["clamp(2.75rem, 6vw, 5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.03em" }],
-        "display-lg": ["clamp(2.25rem, 4.5vw, 4rem)", { lineHeight: "1.1", letterSpacing: "-0.025em" }],
-        "display-md": ["clamp(1.75rem, 3vw, 2.75rem)", { lineHeight: "1.15", letterSpacing: "-0.02em" }],
+        // Fluid type — readable from ~320px up without oversized mobile headings
+        "display-xl": [
+          "clamp(2.125rem, 1.2rem + 4.6vw, 5.5rem)",
+          { lineHeight: "1.08", letterSpacing: "-0.03em" },
+        ],
+        "display-lg": [
+          "clamp(1.875rem, 1.15rem + 3.2vw, 4rem)",
+          { lineHeight: "1.12", letterSpacing: "-0.025em" },
+        ],
+        "display-md": [
+          "clamp(1.5rem, 1.05rem + 2vw, 2.75rem)",
+          { lineHeight: "1.18", letterSpacing: "-0.02em" },
+        ],
       },
       maxWidth: {
         site: "1400px",
       },
       spacing: {
-        section: "clamp(4.5rem, 10vw, 8rem)",
+        section: "clamp(3.5rem, 2.5rem + 4vw, 8rem)",
+        "nav-h": "clamp(4rem, 3.5rem + 1vw, 5rem)",
+      },
+      minHeight: {
+        touch: "44px",
+      },
+      minWidth: {
+        touch: "44px",
       },
       transitionTimingFunction: {
         reveal: "cubic-bezier(0.22, 1, 0.36, 1)",

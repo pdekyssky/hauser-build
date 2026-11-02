@@ -21,7 +21,7 @@ export default function SectionHeading({
     >
       {eyebrow ? (
         <p
-          className={`text-xs font-medium uppercase tracking-[0.2em] ${
+          className={`text-[0.65rem] font-medium uppercase tracking-[0.16em] sm:text-xs sm:tracking-[0.2em] ${
             dark ? "text-cream/50" : "text-ink-muted"
           }`}
         >
@@ -29,15 +29,15 @@ export default function SectionHeading({
         </p>
       ) : null}
       <h2
-        className={`font-display text-display-md font-semibold ${
-          eyebrow ? "mt-3" : ""
+        className={`font-display text-display-md font-semibold text-balance ${
+          eyebrow ? "mt-2 sm:mt-3" : ""
         } ${dark ? "text-cream" : "text-ink"}`}
       >
         {title}
       </h2>
       {description ? (
         <p
-          className={`mt-4 text-base leading-relaxed md:text-lg ${
+          className={`mt-3 text-[0.9375rem] leading-relaxed sm:mt-4 sm:text-base md:text-lg ${
             dark ? "text-cream/65" : "text-ink-muted"
           }`}
         >

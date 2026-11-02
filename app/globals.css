@@ -6,10 +6,31 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     @apply bg-cream text-ink antialiased;
+    overflow-x: clip;
+  }
+
+  /* Prevent long unbroken strings (emails, URLs) from causing horizontal scroll */
+  p,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  dd,
+  address {
+    overflow-wrap: anywhere;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+    height: auto;
   }
 
   ::selection {
@@ -25,7 +46,23 @@
 
 @layer components {
   .container-site {
-    @apply mx-auto w-full max-w-site px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-site;
+    padding-left: max(1rem, env(safe-area-inset-left, 0px));
+    padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  }
+
+  @media (min-width: 640px) {
+    .container-site {
+      padding-left: max(2rem, env(safe-area-inset-left, 0px));
+      padding-right: max(2rem, env(safe-area-inset-right, 0px));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-site {
+      padding-left: max(3rem, env(safe-area-inset-left, 0px));
+      padding-right: max(3rem, env(safe-area-inset-right, 0px));
+    }
   }
 
   .link-underline {
@@ -73,6 +110,39 @@
 
   .hairline {
     @apply border-ink/10;
+  }
+
+  /* Shared interactive control sizing for touch */
+  .btn-touch {
+    @apply inline-flex min-h-touch items-center justify-center px-5 py-3 text-sm font-medium;
+  }
+
+  /* Mobile menu: prefer dynamic viewport; avoid 100vh alone (Safari chrome) */
+  .mobile-menu-overlay {
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+
+  .mobile-menu-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Form controls: 16px+ on mobile avoids iOS focus zoom */
+  .form-control {
+    @apply mt-2 w-full border border-ink/15 bg-cream px-4 text-ink outline-none transition-colors placeholder:text-ink-soft focus:border-ink/40;
+    min-height: 44px;
+    font-size: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .form-control {
+      font-size: 0.875rem;
+    }
   }
 }
 

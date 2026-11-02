@@ -150,8 +150,7 @@ export default function ContactForm() {
     }
   }
 
-  const inputClass =
-    "mt-2 w-full border border-ink/15 bg-cream px-4 py-3 text-sm text-ink outline-none transition-colors placeholder:text-ink-soft focus:border-ink/40";
+  const inputClass = "form-control";
   const labelClass =
     "text-xs font-medium uppercase tracking-[0.14em] text-ink-muted";
 
@@ -333,7 +332,7 @@ export default function ContactForm() {
             id="message"
             name="message"
             rows={5}
-            className={`${inputClass} resize-y min-h-[120px]`}
+            className={`${inputClass} min-h-[8rem] resize-y`}
             placeholder="Stručne o projekte, rozsahu alebo termíne…"
             value={values.message}
             onChange={(e) =>
@@ -347,7 +346,7 @@ export default function ContactForm() {
         <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-ink-muted">
           <input
             type="checkbox"
-            className="mt-1 h-4 w-4 shrink-0 border-ink/30 accent-ink"
+            className="mt-0.5 h-5 w-5 shrink-0 border-ink/30 accent-ink"
             checked={values.privacy}
             onChange={(e) =>
               setValues((v) => ({ ...v, privacy: e.target.checked }))
@@ -385,7 +384,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="w-full bg-ink px-6 py-3.5 text-sm font-medium text-cream transition-colors hover:bg-clay disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="btn-touch w-full bg-ink text-cream transition-colors hover:bg-clay disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
       >
         {status === "loading" ? "Odosielam…" : "Odoslať nezáväzný dopyt"}
       </button>

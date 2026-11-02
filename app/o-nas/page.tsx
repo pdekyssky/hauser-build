@@ -13,7 +13,7 @@ export const metadata = createMetadata({
 export default function AboutPage() {
   return (
     <>
-      <section className="pt-28 md:pt-36">
+      <section className="pt-24 sm:pt-28 md:pt-36">
         <div className="container-site pb-section">
           <SectionHeading
             eyebrow={aboutContent.hero.eyebrow}
@@ -62,7 +62,7 @@ export default function AboutPage() {
           <SectionHeading title={aboutContent.values.title} />
           <div className="mt-12 grid gap-px bg-ink/10 sm:grid-cols-2">
             {aboutContent.values.items.map((item, index) => (
-              <article key={item.title} className="bg-cream p-8 md:p-10">
+              <article key={item.title} className="bg-cream p-6 sm:p-8 md:p-10">
                 <span className="font-display text-sm tracking-[0.2em] text-clay">
                   {String(index + 1).padStart(2, "0")}
                 </span>

@@ -94,7 +94,7 @@ export default function Navbar() {
         <div className="container-site flex h-16 items-center justify-between gap-3 md:h-20">
           <Link
             href="/"
-            className="min-w-0 font-display text-base font-semibold tracking-tight text-ink sm:text-lg md:text-xl"
+            className="min-w-0 truncate font-display text-base font-semibold tracking-tight text-ink sm:text-lg md:text-xl"
           >
             {siteConfig.name}
           </Link>
@@ -117,23 +117,24 @@ export default function Navbar() {
           <div className="hidden items-center gap-3 lg:flex">
             <a
               href={`tel:${siteConfig.phoneHref}`}
-              className="bg-ink px-5 py-2.5 text-sm font-medium text-cream transition-colors hover:bg-clay"
+              className="btn-touch bg-ink text-cream transition-colors hover:bg-clay"
             >
               {siteConfig.cta.label}
             </a>
           </div>
 
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex shrink-0 items-center gap-2 lg:hidden">
             <a
               href={`tel:${siteConfig.phoneHref}`}
-              className="bg-ink px-3 py-2 text-xs font-medium text-cream transition-colors hover:bg-clay sm:px-4 sm:text-sm"
+              className="inline-flex min-h-touch items-center bg-ink px-3 text-xs font-medium text-cream transition-colors hover:bg-clay sm:px-4 sm:text-sm"
             >
-              {siteConfig.cta.label}
+              <span className="sm:hidden">Zavolať</span>
+              <span className="hidden sm:inline">{siteConfig.cta.label}</span>
             </a>
             <button
               ref={openButtonRef}
               type="button"
-              className="flex h-10 w-10 items-center justify-center"
+              className="flex h-11 w-11 items-center justify-center"
               aria-expanded={open}
               aria-controls={menuId}
               aria-label="Otvoriť menu"
@@ -153,20 +154,23 @@ export default function Navbar() {
       {/* Full-screen mobile menu — sibling of header so it covers hero/content */}
       <div
         id={menuId}
-        className={`fixed inset-0 z-[100] flex flex-col bg-[#F1EEE8] transition-[opacity,visibility] duration-300 lg:hidden ${
+        className={`mobile-menu-overlay fixed inset-0 z-[100] flex flex-col bg-[#F1EEE8] transition-[opacity,visibility] duration-300 lg:hidden ${
           open
             ? "visible pointer-events-auto opacity-100"
             : "invisible pointer-events-none opacity-0"
         }`}
-        style={{ height: "100dvh", minHeight: "100vh" }}
         aria-hidden={!open}
         role="dialog"
         aria-modal={open}
         aria-label="Mobilná navigácia"
       >
         <div
-          className="flex h-16 shrink-0 items-center justify-between border-b border-ink/10 px-5 sm:px-8"
-          style={{ paddingTop: "env(safe-area-inset-top)" }}
+          className="flex shrink-0 items-center justify-between border-b border-ink/10 px-5 sm:px-8"
+          style={{
+            paddingTop: "max(0.75rem, env(safe-area-inset-top))",
+            paddingBottom: "0.75rem",
+            minHeight: "4rem",
+          }}
         >
           <Link
             href="/"
@@ -178,7 +182,7 @@ export default function Navbar() {
           <button
             ref={closeButtonRef}
             type="button"
-            className="flex h-10 w-10 items-center justify-center text-ink"
+            className="flex h-11 w-11 items-center justify-center text-ink"
             aria-label="Zavrieť menu"
             onClick={closeMenu}
           >
@@ -191,22 +195,22 @@ export default function Navbar() {
         </div>
 
         <nav
-          className="flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-contain px-5 sm:px-8"
+          className="mobile-menu-scroll min-h-0 flex-1 overflow-y-auto px-5 sm:px-8"
           aria-label="Mobilná navigácia"
         >
-          <ul className="flex flex-col py-6">
+          <ul className="flex flex-col pt-4">
             {mobileNav.map((item, index) => (
               <li key={item.href} className="border-b border-ink/10">
                 <Link
                   href={item.href}
-                  className="group flex items-baseline gap-4 py-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B89A62]"
+                  className="group flex min-h-touch items-baseline gap-3 py-3.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#B89A62] sm:gap-4 sm:py-4"
                   onClick={closeMenu}
                   tabIndex={open ? 0 : -1}
                 >
                   <span className="font-display text-xs tracking-[0.2em] text-[#B89A62]">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-display text-[1.75rem] font-semibold leading-none tracking-tight text-ink transition-colors group-hover:text-[#B89A62] sm:text-[2rem]">
+                  <span className="font-display text-[clamp(1.5rem,1.15rem+2vw,2rem)] font-semibold leading-none tracking-tight text-ink transition-colors group-hover:text-[#B89A62]">
                     {item.label}
                   </span>
                 </Link>
@@ -214,9 +218,13 @@ export default function Navbar() {
             ))}
           </ul>
 
+          {/* Flows after nav — no mt-auto / justify-between that pushes past the fold */}
           <div
-            className="mt-auto border-t border-ink/10 py-8"
-            style={{ paddingBottom: "max(2rem, env(safe-area-inset-bottom))" }}
+            className="mt-8 border-t border-ink/10 pt-6"
+            style={{
+              paddingBottom:
+                "max(1.5rem, calc(1rem + env(safe-area-inset-bottom)))",
+            }}
           >
             <p className="text-xs font-medium uppercase tracking-[0.18em] text-ink-muted">
               Máte projekt?

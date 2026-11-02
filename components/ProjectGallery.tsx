@@ -57,7 +57,7 @@ export default function ProjectGallery({
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActive(cat.id)}
-                className={`border px-4 py-2 text-sm transition-colors ${
+                className={`inline-flex min-h-touch items-center border px-4 text-sm transition-colors ${
                   isActive
                     ? "border-ink bg-ink text-cream"
                     : "border-ink/15 text-ink-muted hover:border-ink/40 hover:text-ink"
@@ -75,7 +75,7 @@ export default function ProjectGallery({
           <div
             key={project.id}
             className={`mb-4 break-inside-avoid lg:mb-5 ${
-              index % 5 === 0 ? "sm:mt-8" : ""
+              index % 5 === 0 ? "lg:mt-6" : ""
             }`}
           >
             <ProjectCard

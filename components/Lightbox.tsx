@@ -41,7 +41,11 @@ export default function Lightbox({
 
   return (
     <div
-      className="fixed inset-0 z-[60] flex items-center justify-center bg-ink/90 p-4 md:p-10"
+      className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-ink/90 p-4 sm:p-6 md:p-10"
+      style={{
+        paddingTop: "max(1rem, env(safe-area-inset-top))",
+        paddingBottom: "max(1rem, env(safe-area-inset-bottom))",
+      }}
       role="dialog"
       aria-modal="true"
       aria-label={title ?? "Zväčšená fotografia"}
@@ -49,7 +53,8 @@ export default function Lightbox({
     >
       <button
         type="button"
-        className="absolute right-4 top-4 z-10 border border-cream/30 px-3 py-2 text-sm text-cream transition-colors hover:bg-cream/10 md:right-8 md:top-8"
+        className="btn-touch absolute right-3 top-3 z-10 border border-cream/30 text-cream transition-colors hover:bg-cream/10 sm:right-6 sm:top-6 md:right-8 md:top-8"
+        style={{ top: "max(0.75rem, env(safe-area-inset-top))" }}
         onClick={onClose}
         aria-label="Zavrieť"
       >
@@ -57,7 +62,7 @@ export default function Lightbox({
       </button>
 
       <figure
-        className="relative max-h-full w-full max-w-5xl"
+        className="relative my-auto w-full max-w-5xl pt-12"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink">

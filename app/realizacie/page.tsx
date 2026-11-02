@@ -13,8 +13,8 @@ export const metadata = createMetadata({
 export default function ProjectsPage() {
   return (
     <>
-      <section className="pt-28 md:pt-36">
-        <div className="container-site pb-10 md:pb-14">
+      <section className="pt-24 sm:pt-28 md:pt-36">
+        <div className="container-site pb-8 sm:pb-10 md:pb-14">
           <SectionHeading
             eyebrow="Portfólio"
             title="Realizácie"
