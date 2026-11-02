@@ -1,0 +1,17 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-label="Materiál">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C8B8A4"/>
+      <stop offset="100%" stop-color="#8A7058"/>
+    </linearGradient>
+    <filter id="n">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.15  0 0 0 0 0.12  0 0 0 0 0.1  0 0 0 0.12 0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#g)"/>
+  <rect width="1600" height="1200" filter="url(#n)" opacity="0.45"/>
+  <rect x="0" y="864" width="1600" height="336" fill="#20201E" opacity="0.22"/>
+  <text x="64" y="1136" fill="#F4F1EB" font-family="Georgia, serif" font-size="36" opacity="0.9">Materiál</text>
+</svg>
